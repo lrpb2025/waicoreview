@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact - World Artificial Intelligence Cooperation Organization ("WAICO") Review</title>
+</head>
+<body>
+
+  <a href="index.html">&larr; Back to Home</a>
+
+  <h1>Contact</h1>
+
+  <form id="contact-form">
+    <label for="surname">Surname</label>
+    <input type="text" id="surname" name="surname" required>
+
+    <label for="givenName">Given Name</label>
+    <input type="text" id="givenName" name="givenName" required>
+
+    <label for="organization">Organization</label>
+    <input type="text" id="organization" name="organization">
+
+    <label for="region">Region</label>
+    <select id="region" name="region">
+      <option value="">Select a region</option>
+      <option value="Global">Global</option>
+      <option value="Northern Africa">Northern Africa</option>
+      <option value="Sub-Saharan Africa">Sub-Saharan Africa</option>
+      <option value="Northern America">Northern America</option>
+      <option value="Latin America">Latin America</option>
+      <option value="Caribbean">Caribbean</option>
+      <option value="Central Asia">Central Asia</option>
+      <option value="Eastern Europe">Eastern Europe</option>
+      <option value="Northern Europe">Northern Europe</option>
+      <option value="Southern Europe">Southern Europe</option>
+      <option value="Western Europe">Western Europe</option>
+      <option value="Australia and New Zealand">Australia and New Zealand</option>
+      <option value="Melanesia">Melanesia</option>
+      <option value="Micronesia">Micronesia</option>
+      <option value="Polynesia">Polynesia</option>
+    </select>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="jobTitle">Job Title</label>
+    <input type="text" id="jobTitle" name="jobTitle">
+
+    <label for="website">Website</label>
+    <input type="url" id="website" name="website" placeholder="https://">
+
+    <button type="submit">Send</button>
+    <p id="form-status"></p>
+  </form>
+
+  <script>
+  document.getElementById('contact-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const status = document.getElementById('form-status');
+    status.textContent = 'Sending...';
+
+    const data = {
+      surname: this.surname.value,
+      givenName: this.givenName.value,
+      organization: this.organization.value,
+      region: this.region.value,
+      email: this.email.value,
+      jobTitle: this.jobTitle.value,
+      website: this.website.value,
+    };
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        status.textContent = 'Thank you — your submission has been sent.';
+        this.reset();
+      } else {
+        status.textContent = 'Something went wrong. Please try again.';
+      }
+    } catch (err) {
+      status.textContent = 'Something went wrong. Please try again.';
+    }
+  });
+  </script>
+
+</body>
+</html>
