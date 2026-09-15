@@ -11,10 +11,15 @@ export default async function handler(req, res) {
     email,
     jobTitle,
     website,
+    dpaAgreed,
   } = req.body || {};
 
   if (!surname || !givenName || !email) {
     return res.status(400).json({ error: 'Missing required fields' });
+  }
+
+  if (dpaAgreed !== true) {
+    return res.status(400).json({ error: 'Data Protection Agreement must be accepted' });
   }
 
   const lines = [
@@ -25,6 +30,7 @@ export default async function handler(req, res) {
     `Region: ${region || '(not provided)'}`,
     `Job Title: ${jobTitle || '(not provided)'}`,
     `Website: ${website || '(not provided)'}`,
+    `Data Protection Agreement accepted: Yes`,
   ].join('\n');
 
   try {
@@ -36,7 +42,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         from: 'WAICO Review Contact Form <onboarding@resend.dev>',
-        to: 'lrpb2025@outlook.com', // <-- replace with the address you want submissions sent to
+        to: 'lrpb2025@outlook.com',
         reply_to: email,
         subject: `New submission from ${givenName} ${surname}`,
         text: lines,

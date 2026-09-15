@@ -49,6 +49,11 @@
     <label for="website">Website</label>
     <input type="url" id="website" name="website" placeholder="https://">
 
+    <p>
+      <input type="checkbox" id="dpaAgreed" name="dpaAgreed" required>
+      <label for="dpaAgreed">I have read and agree to the <a href="data-protection.html" target="_blank">Data Protection Agreement</a></label>
+    </p>
+
     <button type="submit">Send</button>
     <p id="form-status"></p>
   </form>
@@ -67,6 +72,7 @@
       email: this.email.value,
       jobTitle: this.jobTitle.value,
       website: this.website.value,
+      dpaAgreed: this.dpaAgreed.checked,
     };
 
     try {
