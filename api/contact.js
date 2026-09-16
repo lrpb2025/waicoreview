@@ -11,15 +11,17 @@ export default async function handler(req, res) {
     email,
     jobTitle,
     website,
-    dpaAgreed,
+    'website-url': honeypot,
   } = req.body || {};
+
+  // Honeypot check: real visitors never fill this hidden field, so if it
+  // has any value, silently pretend success and drop the submission.
+  if (honeypot) {
+    return res.status(200).json({ success: true });
+  }
 
   if (!surname || !givenName || !email) {
     return res.status(400).json({ error: 'Missing required fields' });
-  }
-
-  if (dpaAgreed !== true) {
-    return res.status(400).json({ error: 'Data Protection Agreement must be accepted' });
   }
 
   const lines = [
@@ -30,7 +32,6 @@ export default async function handler(req, res) {
     `Region: ${region || '(not provided)'}`,
     `Job Title: ${jobTitle || '(not provided)'}`,
     `Website: ${website || '(not provided)'}`,
-    `Data Protection Agreement accepted: Yes`,
   ].join('\n');
 
   try {
@@ -42,7 +43,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         from: 'WAICO Review Contact Form <onboarding@resend.dev>',
-        to: 'lrpb2025@outlook.com',
+        to: 'YOUR_EMAIL@example.com', // <-- replace with the address you want submissions sent to
         reply_to: email,
         subject: `New submission from ${givenName} ${surname}`,
         text: lines,

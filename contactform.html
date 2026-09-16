@@ -11,6 +11,12 @@
   <h1>Contact</h1>
 
   <form id="contact-form">
+    <!-- Honeypot field: hidden from real visitors, but bots often fill it in automatically -->
+    <div style="position: absolute; left: -9999px;" aria-hidden="true">
+      <label for="website-url">Leave this field blank</label>
+      <input type="text" id="website-url" name="website-url" tabindex="-1" autocomplete="off">
+    </div>
+
     <label for="surname">Surname</label>
     <input type="text" id="surname" name="surname" required>
 
@@ -49,11 +55,6 @@
     <label for="website">Website</label>
     <input type="url" id="website" name="website" placeholder="https://">
 
-    <p>
-      <input type="checkbox" id="dpaAgreed" name="dpaAgreed" required>
-      <label for="dpaAgreed">I have read and agree to the <a href="data-protection.html" target="_blank">Data Protection Agreement</a></label>
-    </p>
-
     <button type="submit">Send</button>
     <p id="form-status"></p>
   </form>
@@ -72,7 +73,7 @@
       email: this.email.value,
       jobTitle: this.jobTitle.value,
       website: this.website.value,
-      dpaAgreed: this.dpaAgreed.checked,
+      'website-url': this['website-url'].value,
     };
 
     try {
