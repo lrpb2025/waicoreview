@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap');
+
+:root {
+  --bg: #ffffff;
+  --ink: #141414;
+  --ink-soft: #3b3b3b;
+  --accent-blue: #8ed2ea;
+  --accent-blue-dark: #57b6d6;
+  --link: #1c6ea4;
+  --accent-red: #e2483d;
+  --line: #141414;
+  --max: 1160px;
+  --font: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+/* ---------- Site header ---------- */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 24px 32px;
+}
+
+.wordmark {
+  display: inline-block;
+  color: var(--ink);
+}
+.wordmark img {
+  display: block;
+  height: 96px;
+  width: auto;
+}
+.wordmark:hover { text-decoration: none; }
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 15px;
+  margin-left: 28px;
+}
+.site-nav a:first-child { margin-left: 0; }
+.site-nav a:hover { color: var(--link); text-decoration: none; }
+
+.back-link {
+  display: inline-block;
+  margin: 24px 32px 0;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+/* ---------- Buttons ---------- */
+
+a.btn, button, .btn {
+  display: inline-block;
+  background: var(--accent-blue);
+  color: #ffffff;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  border: none;
+  border-radius: 999px;
+  padding: 13px 28px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+a.btn:hover, button:hover, .btn:hover {
+  background: var(--accent-blue-dark);
+  text-decoration: none;
+}
+a.btn:active, button:active, .btn:active { transform: translateY(1px); }
+
+.btn-row { margin: 22px 0 8px; }
+
+/* ---------- Hero ---------- */
+
+.hero {
+  max-width: 760px;
+  margin: 24px auto 0;
+  padding: 0 32px 40px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.hero .tagline {
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--ink-soft);
+  margin: 14px 0 0;
+}
+
+hr.divider {
+  border: none;
+  border-top: 1px solid var(--line);
+  max-width: var(--max);
+  margin: 20px auto 32px;
+}
+
+/* ---------- Main content ---------- */
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 32px 80px;
+}
+
+main section { margin-bottom: 48px; }
+
+main h1 {
+  font-size: 26px;
+  font-weight: 800;
+  text-align: center;
+  margin: 0 0 20px;
+}
+
+main h2 {
+  font-size: 19px;
+  font-weight: 700;
+  text-align: center;
+  margin: 32px 0 16px;
+}
+
+main p, main li {
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+main ol { padding-left: 22px; }
+main li { margin-bottom: 18px; }
+main li strong { color: var(--ink); font-weight: 700; }
+
+main p strong { color: var(--ink); font-weight: 700; }
+
+.center { text-align: center; }
+
+/* ---------- Forms ---------- */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+form label {
+  font-weight: 700;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+form input, form select {
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 11px 14px;
+  border: 1px solid #c9c9c9;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+}
+form input:focus, form select:focus {
+  outline: none;
+  border-color: var(--accent-blue-dark);
+  box-shadow: 0 0 0 3px rgba(142, 210, 234, 0.35);
+}
+
+form button[type="submit"] {
+  margin-top: 6px;
+  align-self: center;
+}
+
+#form-status {
+  text-align: center;
+  font-weight: 600;
+  min-height: 1.4em;
+}
+
+/* ---------- Legal / long-form pages ---------- */
+
+.legal main { max-width: 760px; }
+.legal h1 { text-align: left; }
+.legal h2 { text-align: left; margin-top: 36px; }
+.legal p { font-weight: 500; line-height: 1.75; }
+.legal table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 24px;
+  font-size: 15px;
+}
+.legal table td {
+  border: 1px solid #d8d8d8;
+  padding: 10px 14px;
+  vertical-align: top;
+  color: var(--ink-soft);
+}
+.legal table td:first-child {
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.updated {
+  color: var(--ink-soft);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 32px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 640px) {
+  .site-header { justify-content: center; text-align: center; }
+  .site-nav { justify-content: center; }
+  main h1 { font-size: 22px; }
+}

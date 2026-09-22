@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact - World Artificial Intelligence Cooperation Organization ("WAICO") Review</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <a href="index.html">&larr; Back to Home</a>
+  <a class="back-link" href="index.html">&larr; Back to Home</a>
 
+  <main>
   <h1>Contact</h1>
 
   <form id="contact-form">
@@ -59,6 +62,7 @@
     <button type="submit">Send</button>
     <p id="form-status"></p>
   </form>
+  </main>
 
   <script>
   document.getElementById('contact-form').addEventListener('submit', async function (e) {
@@ -75,7 +79,6 @@
       jobTitle: this.jobTitle.value,
       website: this.website.value,
       'website-url': this['website-url'].value,
-	shareConsent: this.shareConsent.checked,
     };
 
     try {
