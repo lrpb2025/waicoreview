@@ -11,6 +11,7 @@ export default async function handler(req, res) {
     email,
     jobTitle,
     website,
+    shareConsent,
     'website-url': honeypot,
   } = req.body || {};
 
@@ -28,6 +29,7 @@ export default async function handler(req, res) {
     `Surname: ${surname}`,
     `Given Name: ${givenName}`,
     `Email: ${email}`,
+    `Consent to share contact details with other Participants: ${shareConsent ? 'Yes' : 'No'}`,
     `Organization: ${organization || '(not provided)'}`,
     `Region: ${region || '(not provided)'}`,
     `Job Title: ${jobTitle || '(not provided)'}`,
