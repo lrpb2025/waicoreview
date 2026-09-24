@@ -44,7 +44,7 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'WAICO Review Contact Form <onboarding@resend.dev>',
+        from: 'WAICO Review Contact Form <contactform@waicoreview.com>',
         to: 'dataprotection@waicoreview.com', // <-- replace with the address you want submissions sent to
         reply_to: email,
         subject: `New submission from ${givenName} ${surname}`,
