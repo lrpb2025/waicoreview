@@ -10,8 +10,8 @@ export default async function handler(req, res) {
     region,
     email,
     jobTitle,
-    shareConsent,
     website,
+    shareConsent,
     'website-url': honeypot,
   } = req.body || {};
 
@@ -29,11 +29,11 @@ export default async function handler(req, res) {
     `Surname: ${surname}`,
     `Given Name: ${givenName}`,
     `Email: ${email}`,
+    `Consent to share contact details with other Participants: ${shareConsent ? 'Yes' : 'No'}`,
     `Organization: ${organization || '(not provided)'}`,
     `Region: ${region || '(not provided)'}`,
     `Job Title: ${jobTitle || '(not provided)'}`,
     `Website: ${website || '(not provided)'}`,
-    `Consent to share contact details with other Participants: ${shareConsent ? 'Yes' : 'No'}`,,
   ].join('\n');
 
   try {
@@ -44,8 +44,8 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'WAICO Review Contact Form <contactform@waicoreview.com>',
-        to: 'dataprotection@waicoreview.com', // <-- replace with the address you want submissions sent to
+        from: 'WAICO Review Contact Form <onboarding@resend.dev>',
+        to: 'YOUR_EMAIL@example.com', // <-- replace with the address you want submissions sent to
         reply_to: email,
         subject: `New submission from ${givenName} ${surname}`,
         text: lines,
